@@ -41,7 +41,7 @@ wisher "Shronoa" #Notice you didn't put the argument in (). But, it still works.
 
 #String
 =begin
-    String is one of the basic data-types in ruby.
+    String is one of the basic data-types in ruby and is IMMUTABLE!
     A String is always enclosed within double-quotes("") OR single-quotes('').
     You can perform multiple operations on Strings like 'String-concatenation', 'String-Interpolation', etc.
 =end
@@ -84,4 +84,27 @@ p wrong_wish
         "".nil? //false
         nil.nil? //true
     08) String.length: returns the length of the string.
+    09) String[index]: Returns the character at 'index' of String.
+    10) Object.is_a?(data-type): tells whether the object belongs to the data-type specified. Boolean!
+    11) Object.instance_of?(Class): tells whether the object is an instance of the specified class. Boolean! 
+    12) String1.eql?("ref_string"): tells whether String1 is same as ref_string
+    13) var1.equal?(var2): 
+        ***Be careful with this method. It only checks if the two variables are pointing to same address.
+        "shronoa".equal?("shronoa") //false
+        var1 = 4
+        var2 = var1
+        var1.equal?(var2) //true
+    14) string1.include?('ref_string'): checks if the ref_string is a substring of string1. Boolean!
+    15) string1.sub("ref_substring","substitute_string"): In string1, the first occurence of 'ref_substring' is replaced by 'substitute_string'.
+    16) string1.gsub("ref_substring","substitute_string"): All the occurences of 'ref_substring' in string1 are replaced by 'substitute_string'.
+    17) String.count("char_sequence"): Returns the max occuring frequency of any of the substring in 'char_sequence' passed.
+        str = "shronoa"
+        str.count("o") //2
+        str.count("sh") //2 ???
+        str.count("zs") //1  ???
+        str.count("sz") //1 ???
+        str.count("on") //3 ??!!!
 =end
+
+
+### DAY-3
