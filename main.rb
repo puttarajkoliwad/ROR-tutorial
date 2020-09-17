@@ -197,7 +197,7 @@ Integer Methods:
     **In most cases the conditions in 'if' and 'elsif' blocks are mutually exclusive. But, if they are not mutually exclusive, 
     the programmer should take care of the ORDER in which the conditions are used. See the example below.
 
-    **'switch' block is another advanced conditional block.
+    **'switch(case)' block is another advanced conditional block.
 =end
 
 #if-else example. This is an example from Hackerearth coding platform.
@@ -218,9 +218,11 @@ else
 end
 
 def sectionBreak()
-    puts
-    20.times{print "-"}
-    4.times{puts}
+    2.times{puts}
+    50.times{print "-"}
+    print "CHAPTER ENDED"
+    90.times{print "-"}
+    3.times{puts}
 end
 
 sectionBreak()
@@ -257,4 +259,122 @@ sectionBreak()
 14) arr.flatten(n): Flattens the arr 'n' times. By default 'n' is DEPTH of the arr. Always 'n' is considered for >0. Can be used with bang(!).
 15) arr.eql?(arr2): Checks if arr and arr2 have same elements(are equal), even in depths.
 16) arr.shuffle(): Shuffles the position of arr elements. Can be used with bang(!).
+17) %w("This is a string"): It is special method that returns string array of words within it delimited by space(' ').
 =end
+
+### Day-4: 17/09/2020, Thu.
+
+arr =[1]
+arr.push(2) #[1, 2]
+arr[3] = 4  #[1, 2, nil, 4], Notice 'nil' at index 2.
+arr.unshift("start") #["start",1,2,nil,4]
+arr << "end" #["start", 1, 2, nil, 4, "end"]
+
+arr.pop() # ["start", 1, 2, nil, 4]
+arr.shift() #[1, 2, nil, 4]
+arr[3] = nil #[1, 2, nil, nil]
+arr.delete_at(3) #[1, 2, nil]
+
+arr.join() #"12"
+arr.unshift(5) #[5, 1, 2, nil]
+arr[3] = 0 #[5, 1, 2, 0]
+arr.sort() # [0, 1, 2, 5], doesnt work with nil values
+arr.push(5) #[5, 1, 2, 0, 5]
+arr.uniq() # [5, 1, 2, 0] returns a temporary with no duplicate elements.
+arr.fill(7) #[7, 7, 7, 7, 7]
+arr.fill(1, 6, 2) #[7, 7, 7, 7, 7, nil, 1, 1], notice 'nil'
+arr[5] = [0, [1, 2]] #[7, 7, 7, 7, 7, [0, [1, 2]], 1, 1]
+arr.flatten() #[7, 7, 7, 7, 7, 0, 1, 2, 1, 2]
+arr.flatten(1) #[7, 7, 7, 7, 7, 0, [1, 2], 1, 1], flattened the depth by 1 unit
+arr2 = [7, 7, 7, 7, 7, [0, [1, 2]], 1, 1]
+arr.eql?(arr2) # true
+arr.shuffle() #[1, 7, 7, 7, [0, [1, 2]], 7, 1, 7] #Order may be diffenet eaxh time this command runs.
+
+strarr = %w("This is a sentence") #strarr = ["This", "is", "a", "sentence"]
+
+# ITERATORS: Iterators allow us to visit each element of any iterable collection.
+# Range: It is a class returning a range of iterables.
+span = 1..5
+span.class() # Range
+span.to_a() # [1, 2, 3, 4, 5]
+
+def sectionStart
+    20.times{print("-")}
+    puts
+end
+p "Iterator"
+sectionStart()
+puts
+
+#Array.each()
+# each() method is Array.map() analogue of Javascript. It goes to each entry and does something with that value and returns some output.
+# Number of outputs returned in Array.each() are equal to length of the array.
+puts("Array.each(): ")
+print("Iterator.each using 'do': ")
+arr.each do |elem|
+    print elem.to_s + " "
+end
+puts
+puts
+
+#2nd way using Iterator.each
+print("Array.each{} using {}: ")
+arr.each {|elem| print(elem.to_s + " ")}
+2.times{puts}
+
+#Array.select(condition): It is the Array.filter() analogue of Javascript. It visits each entry and checks the 'condition'. If it holds good, returns that entry.
+puts("Array.select():")
+selected = arr.select{|elem| elem.is_a?(Integer)}
+puts("Array: #{arr}")
+puts ("Selected array: #{selected}")
+
+
+sectionBreak()
+
+
+
+p "for loop in ruby"
+sectionStart()
+p arr
+for i in arr
+    print i.to_s() + " "
+end
+sectionBreak()
+
+#Hash OR Dictionaries OR Maps
+p "Hash OR Dictionary OR Map in ruby:"
+sectionStart()
+=begin
+    Hashes are the key-value paired data-structures that helps to store a collection of data with an unique id to each entry in the collection.
+    The keys of Hashes in Ruby can have Symbol data-type also. 'Symbol' is an advanced data-type in Ruby whose values stored using hashing technique.
+    The key-set of a Hash in Ruby is allowed to have heterogenous keys.
+    Hashes in Ruby are pretty much like Arrays but only allow index based insertion/deletion where 'keys' act as the indices.
+    They are Iterable and hence .each() and .select() methods can be applied easily on Hashes.
+=end
+
+#Sample Hash with heterogenous key set
+my_hash = {1=>2, 2=>3, 3.4=>4, :a=>9, "h"=>4}
+puts "my_hash: #{my_hash} \n\n"
+
+#Usage of Hash.each()
+my_hash.each{|k, v| puts "key = #{k}, value = #{v}"}
+puts
+my_hash.each{|k, v| puts "#{k} is a #{k.class} "}
+
+#Hash.keys: returns an array of all the keys in Hash
+puts "\nHash.keys: #{my_hash.keys}"
+
+#Hash.values: returns ans array of the values in Hash
+puts "\nHash.values: #{my_hash.values}"
+
+#Hash.invert(): Inverting key-value pairs. Data loss may occur.
+puts "\nHash.invert: #{my_hash.invert}" # {2=>1, 3=>2, 4=>"h", 9=>:a}, Notice key-3.4 has been lost
+
+#Hash.delete(key) : Deletes the entry with 'key' as key and returns it. Returns nil if key does not exist.
+puts "\nHash.delete(key): key = 'h' here! Deleted value: #{my_hash.delete("h")}. my_hash now: #{my_hash}"
+
+#Usage of Hash.select()
+puts "\nFiltering entries whose keys are either Integer OR Symbol using 'Hash.select()': #{my_hash.select{|k, v| k.is_a?(Integer) || k.is_a?(Symbol)}}"
+
+sectionBreak()
+
