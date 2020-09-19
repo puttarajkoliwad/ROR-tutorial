@@ -1,6 +1,8 @@
 #Ruby is an 'Interpreted' programming laguage used extensiely in web-dev. Built like python.
 #This is a single line comment
 
+#**NOTE: Ruby has no pre/post increment(++)/decrement(--) operators!!!
+
 =begin
     This ia a comment as well!.
     But a multiline comment enclosed between '=begin' and '=end' keywords.
@@ -332,13 +334,34 @@ puts ("Selected array: #{selected}")
 sectionBreak()
 
 
-
-p "for loop in ruby"
+#Loops in Ruby
+p "Loops in ruby"
 sectionStart()
+
+#for loop: for loops are most useful when working with Ranges and the range is well defined.
+puts "for loop: "
 p arr
 for i in arr
     print i.to_s() + " "
 end
+
+#while loop: while loops are useful when a computation needs to be done in-definite number of times.
+puts "\n\nwhile loop: "
+i = 0
+while i < arr.length
+    print (arr[i].to_s() + " ")
+    i+=1 #Incrementing OR changing the state of condition statement needs to be taken care since it might lead to infinite looping!
+end
+
+#'loop do': Its a special loop that doesn't have any conditional statement to check. You can only 'break' the loop by giving some codition 'inside the loop itself'
+                    ###This was done on Day-5 actually, but placed in this section for relativity.
+puts("\n\n 'loop do': ")
+loop do
+    print("Do you want to run the loop again (Y/N): ")
+    input = gets.chomp.downcase
+    break if(input != "y")
+end
+
 sectionBreak()
 
 #Hash OR Dictionaries OR Maps
@@ -354,7 +377,11 @@ sectionStart()
 
 #Sample Hash with heterogenous key set
 my_hash = {1=>2, 2=>3, 3.4=>4, :a=>9, "h"=>4}
-puts "my_hash: #{my_hash} \n\n"
+puts "Initial my_hash: #{my_hash}"
+
+#Adding new pair
+my_hash[:p] = 4
+puts "\nAfter 'my_hash[:p] = 4': #{my_hash}\n\n"
 
 #Usage of Hash.each()
 my_hash.each{|k, v| puts "key = #{k}, value = #{v}"}
@@ -368,7 +395,7 @@ puts "\nHash.keys: #{my_hash.keys}"
 puts "\nHash.values: #{my_hash.values}"
 
 #Hash.invert(): Inverting key-value pairs. Data loss may occur.
-puts "\nHash.invert: #{my_hash.invert}" # {2=>1, 3=>2, 4=>"h", 9=>:a}, Notice key-3.4 has been lost
+puts "\nHash.invert: #{my_hash.invert}" # {2=>1, 3=>2, 4=>:p, 9=>:a}, Notice key-3.4 and key-"h" has been lost
 
 #Hash.delete(key) : Deletes the entry with 'key' as key and returns it. Returns nil if key does not exist.
 puts "\nHash.delete(key): key = 'h' here! Deleted value: #{my_hash.delete("h")}. my_hash now: #{my_hash}"
@@ -378,3 +405,42 @@ puts "\nFiltering entries whose keys are either Integer OR Symbol using 'Hash.se
 
 sectionBreak()
 
+###Day-5: 18/09/2020, Fri.
+    #Done 'loop do' for Day-5
+
+###Day-6: 19/09/2020, Sat.
+
+#Object Oriented Programming(OOP):
+puts("Object Oriented Programming(OOP): ")
+sectionStart
+
+=begin
+    Everything in world can be treated as an Object and OOP is a programming paradigm that helps to implement real-world structure in our code.
+    Let's consider a student for eaxmple. Every student has some properties/attributes like 'Roll number', 'ID', 'Name', 'Division', etc. These attributes of a class are
+    called 'instance variables'. The 'instance variables' are common for all the 'objects/instances'(students) of a 'Class'(Student) and can be used as a 'blue-print' for preparing some data like 'student-details'. This data can be used later in many ways.
+    In OOPs, this 'blue-print' is referred by the term "Class". This "blue-print/Class" can be used to create/add a new entry to the list 'student-detail'. Every entry
+    in the 'student-details' represent individual students. In OOPs these entries are referred to as "Instances/Objects" of class "Student".
+
+    Said this, let's understand how OOPs helps in terms of its features, widely known as "OOPs concepts". There are 4 major features/concepts upon which OOP paradigm is built. They are:
+
+    01) Inheritance: Going by the apt meaning, 'Inheritance' means 'a child aquiring the features of his parents'. In programming, thousands of lines of code is written just to add one/few functionality
+            for the application. So, inorder to build the entire application it would be too hectic for the developer. One way to tackle this problem is 'reusing' the code for similar 'functionalities'.
+            This improves the structure of code, removes redundancy and saves the time developer as well.\
+    
+    02) Encapsulation & Decapsulation: Encapsulation is a process of hiding the implementation of our core logic. Think of a banking application. If the core logic of transferring money from one account to another account
+            is not hidden, no one would be using the application. But wait, if everything is hidden how can one use the feature itself. Here comes into play, the concept of Decapsulation. Decapsulation is a
+            process of unhiding/giving limited access to the application data. You can actually Hide/Unhide the data by binding the data with their accessor methods.
+            In OOPs these accessor methods are referred to as 'getters' and 'setters'.
+
+    03) Polymorphism: Polymorphism means taking/mimicking multiple forms/features. Let's us consider an act of running. Running in a 100 meter race will have different definition from running in a marathon. In cricket it takes a totally different meaning.
+            If you want to program  the above concept, you can do it defining three different methods/procedures and making different function calls for each. But, the smarter way is to declare one method for all and implementing 3 definitions for one method
+            that performs the action depending on the scenario. You can give the scenario as an argument to the function. This will reduce the number of your function calls, and keeps away the programmer from having to remember multiple function names.
+            
+    04) Abstraction: Abstract in simple terms is 'incomplete'. Sometimes you might want a 'template' for your Class 'blue-print' itself. Programmatically thsi can be achived by using/defining "Abstract Classes". Abstract Classes are nothing but the Classes that have
+            method signature defined but not the implementation. That makes the classes 'incomplete' or in OOPs terms 'Abstract' and these methods are called 'abstract methods'.
+
+    
+    These are the main pillars of OOPs. To see how OOPs is implemented in Ruby, refer to 'OOPs/' folder in the current directory.
+
+    **The OOPs concept remain same for all the programming languages, provided they follow  OOP paradigm.
+=end
