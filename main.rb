@@ -223,7 +223,7 @@ def sectionBreak()
     2.times{puts}
     50.times{print "-"}
     print "CHAPTER ENDED"
-    90.times{print "-"}
+    64.times{print "-"}
     3.times{puts}
 end
 
@@ -444,3 +444,54 @@ sectionStart
 
     **The OOPs concept remain same for all the programming languages, provided they follow  OOP paradigm.
 =end
+sectionBreak
+
+
+#Day-7: 20/09/20, Sun.
+# bcrypt() OR 'BCrypt::Password' gem in Ruby: 
+=begin
+   'BCrypt::Password' is an advanced hasshing technique used to store the passwords. There are many other hashing techniques like 'MD5', but ruby prefers 'bcrypt()' OR 'BCrypt::Password'.
+   The same technique is used by OpenBSD systems also.
+   
+   #Creating a hash:
+   #BCrypt::Password.create('password'): Everytime this statement is run, a new hash will be generated for the argument passed('password'). Even if the same argument is passed each time.
+        # ':salt'  :Above is because of ':salt' that's used at the time of creating a hash value for the password. It generates different hash values for same password.
+
+   #Creating a hash constant to compare:
+   #BCrypt::Password.new('hashed value'): Everytime this statement is run for any 'hashed value' of SAME password, a constant hash-string will be generated.
+
+   
+    **This is just an itro to bcrypt().
+    Must reads:
+        https://www.rubydoc.info/gems/bcrypt-ruby/3.1.5
+        https://www.rubydoc.info/github/codahale/bcrypt-ruby/BCrypt/Password
+        https://www.rubydoc.info/github/codahale/bcrypt-ruby
+=end
+
+#bcrypt(): sample usage
+puts "'bcrypt()' OR 'BCrypt::Password':"
+sectionStart
+
+require 'bcrypt'
+
+    my_password = BCrypt::Password.create("my password",:salt => 6)
+    puts my_password  #=> "$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa"
+    
+    my_password.version              #=> "2a"
+    my_password.cost                 #=> 10
+    my_password == "my password"     #=> true
+    my_password == "not my password" #=> false
+
+    my_password = BCrypt::Password.new("$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa")
+    
+    #new_password = BCrypt::Password.new("my password")   //Threows 'invalid hash' error
+    #BCrypt.Password.new("hash_arg"): 'hash_arg' SHOULD be a hashed password value from 'BCrypt::Password.create("the password").
+    #puts new_password
+
+    my_password == "my password"     #=> true
+    my_password == "not my password" #=> false
+
+    puts(my_password)
+
+    sectionBreak
+
