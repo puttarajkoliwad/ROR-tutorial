@@ -1,8 +1,16 @@
 #OOPs implementation in Ruby
 
+require './crud'
+
+#Day-6
 #Defining a class: A Class is defined using the 'class' keyword. Classes in Ruby are declared in CamelCase.
 
 class Student
+
+    #Including a feature from an exteral module(mixin)
+    #Class methods can not be used directly in a Class as a mixin.
+    include Crud
+
     #Instance variables of a Class are declared using '@' key infront of them.
     @id = 1
     @name
@@ -40,7 +48,8 @@ class Student
         @id = s_id
         @name = s_name
         @username = s_username
-        @password = s_password
+        #@password = s_password  //This is not a safe way to store a password
+        @password = self.create_hash(s_password)
     end
 
     def to_s
@@ -69,3 +78,15 @@ end
 #object creation using 'initialize()'
 stud2 = Student.new(2, "Shronoa", "un2", "pw2")
 puts stud2
+
+#Day-8
+users = [
+    { username: "mashrur", password: "password1" },
+    { username: "jack", password: "password2" },
+    { username: "arya", password: "password3" },
+    { username: "jonshow", password: "password4" },
+    { username: "heisenberg", password: "password5" }
+  ]
+
+#puts stud2.secureRecords(users)
+puts stud2.password

@@ -236,6 +236,9 @@ sectionBreak()
     arr = ["val", 2, 3, 4.6] //This is a standard declaration of an array.
 
 #Array Methods:
+#Creating an array:
+arr = Array.new(size) #Class.new method returns an instance of the Class. Hence, Array.new() returns an empty array if size is not geiven. By default 'size' is zero.
+
 #Adding elements to the array:
 01) arr << elem: appends the 'elem' to the end of arr.
 02) arr.push(elem): adds 'elem' to the end of arr.
@@ -266,7 +269,12 @@ sectionBreak()
 
 ### Day-4: 17/09/2020, Thu.
 
+#Creating an array:
+arr = Array.new #arr = [], arr.empty?=true
+arr =Array.new(3)  #arr = [nil, nil, nil], remember arr.empty? =false here.
 arr =[1]
+
+#Inserting elements into an array
 arr.push(2) #[1, 2]
 arr[3] = 4  #[1, 2, nil, 4], Notice 'nil' at index 2.
 arr.unshift("start") #["start",1,2,nil,4]
@@ -495,3 +503,6 @@ require 'bcrypt'
 
     sectionBreak
 
+# Day-8: 21/09/20, Mon. //Worked in './OOPs/crud.rb'
+
+#mixins: 'mixins' are the features of external modules that are 'included' within a class. See in './OOPs/students.rb'
