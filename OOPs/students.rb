@@ -1,6 +1,10 @@
 #OOPs implementation in Ruby
 
-require './crud'
+require_relative 'crud'
+
+#Below two lies do the same work(importing), but used if the modules are located in different directories.
+#$LOAD_PATH << '.'
+#require 'crud'
 
 #Day-6
 #Defining a class: A Class is defined using the 'class' keyword. Classes in Ruby are declared in CamelCase.

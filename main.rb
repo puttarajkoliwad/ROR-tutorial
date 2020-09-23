@@ -506,3 +506,6 @@ require 'bcrypt'
 # Day-8: 21/09/20, Mon. //Worked in './OOPs/crud.rb'
 
 #mixins: 'mixins' are the features of external modules that are 'included' within a class. See in './OOPs/students.rb'
+
+
+###Day-9: 22/09/20, Tue. //Created MVC '../MVC'. Installed Rails6 and Rails5 and created a project for each.

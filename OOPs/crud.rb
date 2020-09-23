@@ -4,10 +4,9 @@
 
 #In this section we will be learning usage of 'bcrypt()' and creating 'modules' and CRUD operations.
 
-#In order to work with 'bcrypt()' we must 'require' 'bcrypt'
+
 #'require' is key word used to load an external package to our current program.
 
-require 'bcrypt'
 
 #We will be creating an of users and with their {username, password} as an entry, and try to hash the passwords using 'bcrypt()' 
 users = [
@@ -25,6 +24,9 @@ users = [
 #Creating module
 module Crud
     puts "Activated CRUD!"
+
+    #In order to work with 'bcrypt()' we must 'require' 'bcrypt'
+    require 'bcrypt'
 
     #Creating a function to hash the passwords using 'BCrypt::Password.create(password)'
     def create_hash(password)
