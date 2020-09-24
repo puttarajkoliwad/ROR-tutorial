@@ -509,3 +509,76 @@ require 'bcrypt'
 
 
 ###Day-9: 22/09/20, Tue. //Created MVC '../MVC'. Installed Rails6 and Rails5 and created a project for each.
+
+###Day-10: 23/09/20, Wed. // Got 'MVC1' working. Created home page and about page.
+
+###Day-11: 24/09/20, Thu. // Created 'alpha-blog'. Learnt deployment.
+
+#Heroku:
+=begin
+Go to project directory first.
+01) heroku login
+02) heroku create: Creates a deployment envt.
+03) Setting up datatbase gem: By default databse will be 'sqlite'. This is good for dev, but too weak for production. So do the changes.
+    i) Go to 'gemfile' of the project.
+    ii) add 'group :production'
+        group :production do
+            gem 'pg'
+        end
+    iii) Remove 'sqlite' from global declaration block and paste in 'group :development :test'
+    iv) Since the gemfile is edited, reconfigure the bundler by running "bundler config set without 'production'"
+    v) Stage and Commit the changes for final time.
+04) Push the code to server using: "git push heroku master"
+05) Check your application running live by running: "heroku open"
+06) The name for your project will be a random name automatically. Rename it by running: "heroku rename <an-available-good-name>"
+
+
+=end
+
+
+#Backend: Database connectivity using Rails
+=begin
+CRUD: Create Read Update Delete
+
+Rails uses 'Object Relational Mapper(ORM)' 'ActiveRecord' to communicate with database.
+#DBMS (ActiveRecord here) falls into 'Model' section of MVC architecture.
+
+#scaffold: An API to manage RESOURCES in Rails.
+    Scaffold creates table and also generates front-end pages to operate on those tables automatically.
+    01) Generation: rails generate scaffold <Model> <column-name>:<datatype>  <column-name>:<datatype>
+        **Most of the times <model> will be a table name in CamelCase
+        Ex.: rails generate scaffold Article title:string description:text   #'string' is 255 chars, 'text' is much higher chars.
+
+        This will generate a 'migration file' along with required routes and other configuration. This 'migration file' will be used to create 'tables'.
+    02) Locate the migration-file and run it by: rails db:migrate
+
+    03) Scaffold generates these 7 actions(INESCUD):
+        a) index        e) create
+        b) new          f) update
+        c) edit         g) destroy 
+        d) show
+
+
+###Resources management: Articles(DBMS), posts, etc.
+#Articles naming convention in Rails:
+    An Article resource will have MTCV: Model, Table, Controller, View
+    Model name(singular): 'article'
+    Article Model file name(singular & snake_case): 'article.rb'
+    Article Model Class name(singular & CamelCase): 'Article'
+    Table name(Plural): Plural of Model name ('articles').
+    Migration file(plural, snake_case): create_articles
+        #Before creating aricles, we need to create migration_file. Migration file will be created by runing "rails generate migration file_name"
+        Ex.: rails generate migration create_articles
+
+#Executing a 'create_table' query(migration): "rails db:migrate"
+#Rollingback OR undoing prevoiusly executed queries: "rails db:rollback"
+
+#Adding a column: 'add_column()' method is used to add a column to an existing table.
+        syntax: add_column <:table_name>, <:column_name>, <datatype>
+        Ex.: add_column :articles, :created_at, :datetime
+             add_column :articles, :updated_at, :datetime
+        ** 'created_at' & 'updated_at' are the special columns for timestamps managed automatically by 'ActiveRecord'. These will be auto generated if 'scaffold' is used to generate the Articles.
+        ** Same table/schema can be monitored by multiple 'migration_files'
+        **syntax for different database actions differs, not just by transaction type but also by definition. 
+
+=end
