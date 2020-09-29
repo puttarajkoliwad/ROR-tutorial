@@ -654,3 +654,18 @@ Rails uses 'Object Relational Mapper(ORM)' 'ActiveRecord' to communicate with da
     c) arti.errors.full_message: Prints summary of all the error_message
     d) arti.errors.full_messages: returns an arry of error_meesages
 =end
+
+
+###Day-13: 29/09/20, Tue.
+
+=begin
+
+## form_with : It's helper provided by rails to deal with forms, It submits using AJAX.
+
+## before_action : This method takes another function as a parameter and executes it before proceeding to next line of code.
+
+## partial files: Partial files are the files that serve same functionality to other files that are implemented with same ideology.
+    This removes redundancy, highlighting the significance of DRY(Dont Repeat Yourself). These file names start with an underscore('_').
+    
+    
+=end
